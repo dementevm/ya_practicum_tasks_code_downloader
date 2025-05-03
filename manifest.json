@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Ya_Practicum code downloader",
+  "version": "1.0",
+  "description": "Копирует код тестовых заданий с сайта Яндекс.Практикум и упаковывает его в Zip-файл, для последующей работы с ним в своей IDE",
+  "permissions": [
+    "scripting",
+    "downloads",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "host_permissions": [
+    "https://practicum.yandex.ru/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://practicum.yandex.ru/*"],
+      "js": ["jszip.min.js", "popup.js"]
+    }
+  ]
+}
