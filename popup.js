@@ -22,6 +22,8 @@ document.getElementById('downloadBtn').addEventListener('click', async () => {
 
     const zip = new JSZip();
     for (const [key, value] of Object.entries(result)) {
+        let name = key.replace(/^\/+/, '')                      // убрать leading slash :contentReference[oaicite:9]{index=9}
+            .replace(/[<>:"/\\|?*\r\n]+/g, '');
         zip.file(key, value);
     }
     const blob = await zip.generateAsync({ type: 'blob' });
